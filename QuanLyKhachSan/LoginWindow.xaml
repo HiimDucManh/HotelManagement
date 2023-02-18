@@ -1,0 +1,165 @@
+﻿<Window x:Class="QuanLyKhachSan.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:local="clr-namespace:QuanLyKhachSan"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewmodel1="clr-namespace:QuanLyKhachSan.ViewModel" 
+        DataContext="{StaticResource LoginVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Đăng nhập" Height="450" Width="380" 
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+        Name="loginWindow" FontFamily="Montserrat"
+        AllowsTransparency="True" Icon="/Logo.png" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <ImageBrush ImageSource="/pexels-cameron-casey-1334605.png" Stretch="UniformToFill" Opacity="1"/>
+            </Border.Background>
+        </Border>
+
+        <Grid Margin="111,0,111,0">
+            <Image Source="/Modern Line Keep Home Hotel &amp; Resort Logo (1).png" Margin="0,10,0,0"></Image>
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="FontWeight" Value="Light"/>
+                    <Setter Property="FontFamily" Value="Montserrat"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="20"
+                                        BorderThickness="2"
+                                        BorderBrush="White">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Opacity" Value="0.6"/>
+                            <Setter Property="Foreground" Value="DeepSkyBlue"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+
+            <StackPanel  Orientation="Horizontal">
+                <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                         Text="{Binding UserName}"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         FontWeight="SemiBold"
+                         Foreground="White"
+                         FontFamily="Montserrat"
+                         FontSize="16"
+                         HorizontalAlignment="Center"
+                         Width="260"
+                         Height="50" 
+                         Margin="60 0 0 0" BorderBrush="#89070707" Background="{x:Null}"/>
+                <materialDesign:PackIcon Kind="Account"
+                                         VerticalAlignment="Center"
+                                         Foreground="White"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox materialDesign:HintAssist.Hint="Mật khẩu"
+                             x:Name="floatingPasswordBox"
+                             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"    
+                             Foreground="White"
+                             FontFamily="Montserrat"
+                             FontSize="16"
+                             FontWeight="SemiBold"
+                             HorizontalAlignment="Center"
+                             Width="260"
+                             Height="50" 
+                             Margin="60 0 0 0" Background="{x:Null}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                                   CommandParameter="{Binding ElementName=floatingPasswordBox}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
+                <materialDesign:PackIcon Kind="Lock"
+                                         VerticalAlignment="Center"
+                                         Foreground="White" MouseLeftButtonUp="PackIcon_MouseLeftButtonUp"/>
+      
+              
+            </StackPanel>
+            <StackPanel Margin="300 5 40 0" Orientation="Horizontal">
+                <TextBlock x:Name="passVisible" HorizontalAlignment="Right" Text="">
+                    
+                </TextBlock>
+                
+                <ToggleButton x:Name="check" HorizontalAlignment="Right" IsChecked="False"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="MaterialDesignSwitchToggleButton with Custom Track Background" Background="#FFE5E5E5" Checked="check_Checked" Unchecked="check_Unchecked">
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                        <SolidColorBrush
+      Color="SpringGreen" />
+                     
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
+                    <materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                        <SolidColorBrush
+      Color="Gray" />
+                    </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
+                </ToggleButton>
+                
+            </StackPanel>
+
+            <Button Width="260"
+                    ToolTip="Đăng nhập" 
+                    Content="Đăng nhập"
+                    FontWeight="SemiBold"
+                    Background="Transparent"
+                    Margin="0 25 0 0"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=loginWindow}"
+                    IsDefault="True">
+            </Button>
+
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <Button Width="110"
+                        ToolTip="Đăng ký"
+                        Content="Đăng ký" 
+                        FontWeight="SemiBold"
+                        Background="Transparent"
+                        Margin="60 0 40 0"
+                         Click="Button_Click">
+                </Button>
+                <Button Width="110"
+                        ToolTip="Thoát" 
+                        Content="Thoát"
+                        FontWeight="SemiBold"
+                        Background="Transparent"
+                        Command="{Binding CloseCommand}"
+                        CommandParameter="{Binding ElementName=loginWindow}"
+                        />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

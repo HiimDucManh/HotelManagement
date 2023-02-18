@@ -1,0 +1,139 @@
+﻿<Window x:Class="QuanLyKhachSan.EditServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyKhachSan"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Đăng ký" Height="540" Width="400" 
+        Background="Transparent"
+        Name="editServiceWindow" FontFamily="Montserrat"
+        AllowsTransparency="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="3"
+                BorderThickness="2"
+                BorderBrush="#FF31577E">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                    <GradientStop Color="#FF140B6A" Offset="0"/>
+                    <GradientStop Color="#FFC499FD" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Border VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    BorderThickness="0 0 0 3"
+                    BorderBrush="White"
+                    Width="80">
+            <TextBlock Text="EDIT" HorizontalAlignment="Center"
+                           FontSize="26" FontWeight="SemiBold"
+                       Foreground="White"
+                           Margin="0 0 0 5"></TextBlock>
+        </Border>
+
+        <StackPanel Grid.Row="1" Margin="0 60 0 60">
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Mã dịch vụ" Foreground="White" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium"></TextBlock>
+                </Grid>
+                <TextBox BorderThickness="1" BorderBrush="Gray"
+                             Width="260" Foreground="White" FontWeight="Bold"
+                             VerticalContentAlignment="Center"
+                         x:Name="serID"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Tên đầy đủ"  Foreground="White" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium"></TextBlock>
+                </Grid>
+                <TextBox BorderThickness="1" BorderBrush="Gray"
+                         x:Name="serName"
+                             Width="260" Foreground="White" FontWeight="Bold"
+                             VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Mã nhân viên" Foreground="White" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium"></TextBlock>
+                </Grid>
+                <TextBox BorderThickness="1" BorderBrush="Gray"
+                         x:Name="staffID" Foreground="White" FontWeight="Bold"
+                             Width="260"
+                             VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Đơn giá" Foreground="White" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium"></TextBlock>
+                </Grid>
+                <TextBox PreviewTextInput="NumberValidationTextBox" BorderThickness="1" BorderBrush="Gray"
+                         x:Name="price"
+                             Width="260" Foreground="White" FontWeight="Bold"
+                             VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="btnClose" Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Width="105"
+                        Margin="0 0 5 0"
+                        ToolTip="Cancel"
+                        Content="Cancel"
+                        Background="#FF092880"
+                        Foreground="White"
+                        BorderThickness="0" Click="btnClose_Click">
+            </Button>
+            <Button x:Name="btnSave" Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Width="105"
+                        Margin="5 0 0 0"
+                        ToolTip="Save"
+                        Content="Save"
+                        Background="#FF092880"
+                        Foreground="White"
+                        BorderThickness="0" Click="btnSave_Click"
+                     >
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

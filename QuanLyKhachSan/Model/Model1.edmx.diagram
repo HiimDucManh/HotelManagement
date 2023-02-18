@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06e1c56ae6c843189c6740f056f0d09c" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="QLKSModel.BILL" Width="1.5" PointX="5.25" PointY="9.5" />
+        <EntityTypeShape EntityType="QLKSModel.BOOKROOM" Width="1.5" PointX="8.25" PointY="9.25" />
+        <EntityTypeShape EntityType="QLKSModel.CUSTOMER" Width="1.5" PointX="3" PointY="13.625" />
+        <EntityTypeShape EntityType="QLKSModel.HOTELSERVICE" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="QLKSModel.ROOM" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="QLKSModel.STAFF" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="QLKSModel.USER" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="QLKSModel.USERSROLE" Width="1.5" PointX="0.75" PointY="2.25" />
+        <AssociationConnector Association="QLKSModel.BILL_CUS_ID_FK" />
+        <AssociationConnector Association="QLKSModel.BILL_RO_ID_FK" />
+        <AssociationConnector Association="QLKSModel.BILL_SER_ID_FK" />
+        <AssociationConnector Association="QLKSModel.FK__BILL__CUS_ID__5FB337D6" />
+        <AssociationConnector Association="QLKSModel.FK__BILL__SER_ID__60A75C0F" />
+        <AssociationConnector Association="QLKSModel.FK__BOOKROOM__CUS_ID__571DF1D5" />
+        <AssociationConnector Association="QLKSModel.FK__BOOKROOM__CUS_ID__619B8048" />
+        <AssociationConnector Association="QLKSModel.FK__BOOKROOM__RO_ID__5812160E" />
+        <AssociationConnector Association="QLKSModel.FK__BOOKROOM__RO_ID__628FA481" />
+        <AssociationConnector Association="QLKSModel.FK__BOOKROOM__SER_ID__59063A47" />
+        <AssociationConnector Association="QLKSModel.FK__HOTELSERV__STAFF__4D94879B" />
+        <AssociationConnector Association="QLKSModel.FK__HOTELSERV__STAFF__6383C8BA" />
+        <AssociationConnector Association="QLKSModel.FK__USERS__STAFF_ID__5DCAEF64" />
+        <AssociationConnector Association="QLKSModel.FK__USERS__STAFF_ID__656C112C" />
+        <AssociationConnector Association="QLKSModel.FK__USERS__ROLE_ID__5EBF139D" />
+        <AssociationConnector Association="QLKSModel.FK__USERS__ROLE_ID__6477ECF3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

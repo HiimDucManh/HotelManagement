@@ -1,0 +1,114 @@
+﻿<Page x:Class="QuanLyKhachSan.PageCustomer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyKhachSan"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      
+      DataContext="{StaticResource CustomerVM}"
+      Title="PageCustomer">
+
+
+    <materialDesign:Card>
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="pexels-aleksandar-pasaric-325185.jpg" Stretch="UniformToFill">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                            Width="100"
+                            ToolTip="New"
+                            Content="New"
+                            HorizontalAlignment="Right"
+                            Margin="10 10 30 10"
+                            Background="#FF31577E"
+                            BorderThickness="0" Click="Button_Click">
+                    </Button>
+                </Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto"
+                              Grid.Row="1" Loaded="ScrollViewer_Loaded">
+                    <DataGrid x:Name="Data" Margin="8,8,12,8"
+                      ItemsSource="{Binding CustomerList}"
+                      CanUserSortColumns="True"
+                      CanUserAddRows="False"
+                      AutoGenerateColumns="False"
+                      materialDesign:DataGridAssist.CellPadding="8"
+                      materialDesign:DataGridAssist.ColumnHeaderPadding="20" Loaded="DataGrid_Loaded" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="Data_MouseDoubleClick" FontFamily="Roboto" FontSize="14">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="edit" Header="_Edit" Click="edit_Click"></MenuItem>
+                                <MenuItem x:Name="del" Header="_Delete" Click="del_Click"></MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn IsReadOnly="False" Binding="{Binding IsSelected}"
+                                            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                            Header="Thân thiết"
+                                            MinWidth="50"/>
+                            <DataGridTextColumn x:Name="stt" 
+                                        Header="STT" 
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="50"/>
+                            <DataGridTextColumn x:Name="cusID" Binding="{Binding CUS_ID}"
+                                        Header="Mã khách hàng"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding FULL_NAME}"
+                                        Header="Tên khách hàng"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding BIRTHDAY}"
+                                        Header="Ngày sinh"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                         MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding SEX}"
+                                        Header="Giới tính"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding CUS_IDENTITY}"
+                                        Header="Số CMND/CCCD"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding PHONE}"
+                                        Header="Số điện thoại"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding CAREER}"
+                                        Header="Nghề nghiệp"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding NATIONALITY}"
+                                        Header="Quốc tịch"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="130"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </materialDesign:Card>
+</Page>

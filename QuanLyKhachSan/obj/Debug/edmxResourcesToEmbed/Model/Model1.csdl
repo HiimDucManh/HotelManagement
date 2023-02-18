@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLKSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QLKSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BILLs" EntityType="QLKSModel.BILL" />
+    <EntitySet Name="BOOKROOMs" EntityType="QLKSModel.BOOKROOM" />
+    <EntitySet Name="CUSTOMERs" EntityType="QLKSModel.CUSTOMER" />
+    <EntitySet Name="HOTELSERVICEs" EntityType="QLKSModel.HOTELSERVICE" />
+    <EntitySet Name="ROOMs" EntityType="QLKSModel.ROOM" />
+    <EntitySet Name="STAFFs" EntityType="QLKSModel.STAFF" />
+    <EntitySet Name="USERS" EntityType="QLKSModel.USER" />
+    <EntitySet Name="USERSROLEs" EntityType="QLKSModel.USERSROLE" />
+    <AssociationSet Name="BILL_CUS_ID_FK" Association="QLKSModel.BILL_CUS_ID_FK">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="BILL_RO_ID_FK" Association="QLKSModel.BILL_RO_ID_FK">
+      <End Role="ROOM" EntitySet="ROOMs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="BILL_SER_ID_FK" Association="QLKSModel.BILL_SER_ID_FK">
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICEs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__CUS_ID__5FB337D6" Association="QLKSModel.FK__BILL__CUS_ID__5FB337D6">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__SER_ID__60A75C0F" Association="QLKSModel.FK__BILL__SER_ID__60A75C0F">
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICEs" />
+      <End Role="BILL" EntitySet="BILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__CUS_ID__571DF1D5" Association="QLKSModel.FK__BOOKROOM__CUS_ID__571DF1D5">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__CUS_ID__619B8048" Association="QLKSModel.FK__BOOKROOM__CUS_ID__619B8048">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__RO_ID__5812160E" Association="QLKSModel.FK__BOOKROOM__RO_ID__5812160E">
+      <End Role="ROOM" EntitySet="ROOMs" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__RO_ID__628FA481" Association="QLKSModel.FK__BOOKROOM__RO_ID__628FA481">
+      <End Role="ROOM" EntitySet="ROOMs" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__SER_ID__59063A47" Association="QLKSModel.FK__BOOKROOM__SER_ID__59063A47">
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICEs" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOTELSERV__STAFF__4D94879B" Association="QLKSModel.FK__HOTELSERV__STAFF__4D94879B">
+      <End Role="STAFF" EntitySet="STAFFs" />
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOTELSERV__STAFF__6383C8BA" Association="QLKSModel.FK__HOTELSERV__STAFF__6383C8BA">
+      <End Role="STAFF" EntitySet="STAFFs" />
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__STAFF_ID__5DCAEF64" Association="QLKSModel.FK__USERS__STAFF_ID__5DCAEF64">
+      <End Role="STAFF" EntitySet="STAFFs" />
+      <End Role="USER" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__STAFF_ID__656C112C" Association="QLKSModel.FK__USERS__STAFF_ID__656C112C">
+      <End Role="STAFF" EntitySet="STAFFs" />
+      <End Role="USER" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__ROLE_ID__5EBF139D" Association="QLKSModel.FK__USERS__ROLE_ID__5EBF139D">
+      <End Role="USERSROLE" EntitySet="USERSROLEs" />
+      <End Role="USER" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__ROLE_ID__6477ECF3" Association="QLKSModel.FK__USERS__ROLE_ID__6477ECF3">
+      <End Role="USERSROLE" EntitySet="USERSROLEs" />
+      <End Role="USER" EntitySet="USERS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILL_ID" />
+    </Key>
+    <Property Name="BILL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RO_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="CUS_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="SER_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="BILL_DATE" Type="DateTime" Precision="0" />
+    <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="CUSTOMER" Relationship="QLKSModel.BILL_CUS_ID_FK" FromRole="BILL" ToRole="CUSTOMER" />
+    <NavigationProperty Name="ROOM" Relationship="QLKSModel.BILL_RO_ID_FK" FromRole="BILL" ToRole="ROOM" />
+    <NavigationProperty Name="HOTELSERVICE" Relationship="QLKSModel.BILL_SER_ID_FK" FromRole="BILL" ToRole="HOTELSERVICE" />
+    <NavigationProperty Name="CUSTOMER1" Relationship="QLKSModel.FK__BILL__CUS_ID__5FB337D6" FromRole="BILL" ToRole="CUSTOMER" />
+    <NavigationProperty Name="HOTELSERVICE1" Relationship="QLKSModel.FK__BILL__SER_ID__60A75C0F" FromRole="BILL" ToRole="HOTELSERVICE" />
+  </EntityType>
+  <EntityType Name="BOOKROOM">
+    <Key>
+      <PropertyRef Name="B_ID" />
+    </Key>
+    <Property Name="B_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUS_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="CUS_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RO_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="SER_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="DAY_ARRIVAL" Type="DateTime" Precision="0" />
+    <Property Name="DAY_LEFT" Type="DateTime" Precision="0" />
+    <Property Name="DAY_BOOK" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CUSTOMER" Relationship="QLKSModel.FK__BOOKROOM__CUS_ID__571DF1D5" FromRole="BOOKROOM" ToRole="CUSTOMER" />
+    <NavigationProperty Name="CUSTOMER1" Relationship="QLKSModel.FK__BOOKROOM__CUS_ID__619B8048" FromRole="BOOKROOM" ToRole="CUSTOMER" />
+    <NavigationProperty Name="ROOM" Relationship="QLKSModel.FK__BOOKROOM__RO_ID__5812160E" FromRole="BOOKROOM" ToRole="ROOM" />
+    <NavigationProperty Name="ROOM1" Relationship="QLKSModel.FK__BOOKROOM__RO_ID__628FA481" FromRole="BOOKROOM" ToRole="ROOM" />
+    <NavigationProperty Name="HOTELSERVICE" Relationship="QLKSModel.FK__BOOKROOM__SER_ID__59063A47" FromRole="BOOKROOM" ToRole="HOTELSERVICE" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUS_ID" />
+    </Key>
+    <Property Name="CUS_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FULL_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BIRTHDAY" Type="DateTime" Precision="0" />
+    <Property Name="SEX" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="CUS_IDENTITY" Type="Byte" />
+    <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="CAREER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NATIONALITY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BILLs" Relationship="QLKSModel.BILL_CUS_ID_FK" FromRole="CUSTOMER" ToRole="BILL" />
+    <NavigationProperty Name="BILLs1" Relationship="QLKSModel.FK__BILL__CUS_ID__5FB337D6" FromRole="CUSTOMER" ToRole="BILL" />
+    <NavigationProperty Name="BOOKROOMs" Relationship="QLKSModel.FK__BOOKROOM__CUS_ID__571DF1D5" FromRole="CUSTOMER" ToRole="BOOKROOM" />
+    <NavigationProperty Name="BOOKROOMs1" Relationship="QLKSModel.FK__BOOKROOM__CUS_ID__619B8048" FromRole="CUSTOMER" ToRole="BOOKROOM" />
+  </EntityType>
+  <EntityType Name="HOTELSERVICE">
+    <Key>
+      <PropertyRef Name="SER_ID" />
+    </Key>
+    <Property Name="SER_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="STAFF_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FULL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="BILLs" Relationship="QLKSModel.BILL_SER_ID_FK" FromRole="HOTELSERVICE" ToRole="BILL" />
+    <NavigationProperty Name="BILLs1" Relationship="QLKSModel.FK__BILL__SER_ID__60A75C0F" FromRole="HOTELSERVICE" ToRole="BILL" />
+    <NavigationProperty Name="BOOKROOMs" Relationship="QLKSModel.FK__BOOKROOM__SER_ID__59063A47" FromRole="HOTELSERVICE" ToRole="BOOKROOM" />
+    <NavigationProperty Name="STAFF" Relationship="QLKSModel.FK__HOTELSERV__STAFF__4D94879B" FromRole="HOTELSERVICE" ToRole="STAFF" />
+    <NavigationProperty Name="STAFF1" Relationship="QLKSModel.FK__HOTELSERV__STAFF__6383C8BA" FromRole="HOTELSERVICE" ToRole="STAFF" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="RO_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRICE_HOUR" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PRICE_DAY" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PRICE_NIGHT" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="BILLs" Relationship="QLKSModel.BILL_RO_ID_FK" FromRole="ROOM" ToRole="BILL" />
+    <NavigationProperty Name="BOOKROOMs" Relationship="QLKSModel.FK__BOOKROOM__RO_ID__5812160E" FromRole="ROOM" ToRole="BOOKROOM" />
+    <NavigationProperty Name="BOOKROOMs1" Relationship="QLKSModel.FK__BOOKROOM__RO_ID__628FA481" FromRole="ROOM" ToRole="BOOKROOM" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FULL_NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BIRTHDAY" Type="DateTime" Precision="0" />
+    <Property Name="SEX" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="STAFF_IDENTITY" Type="Byte" />
+    <Property Name="PHONE" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="STAFF_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SALARY" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="POSITION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HOTELSERVICEs" Relationship="QLKSModel.FK__HOTELSERV__STAFF__4D94879B" FromRole="STAFF" ToRole="HOTELSERVICE" />
+    <NavigationProperty Name="HOTELSERVICEs1" Relationship="QLKSModel.FK__HOTELSERV__STAFF__6383C8BA" FromRole="STAFF" ToRole="HOTELSERVICE" />
+    <NavigationProperty Name="USERS" Relationship="QLKSModel.FK__USERS__STAFF_ID__5DCAEF64" FromRole="STAFF" ToRole="USER" />
+    <NavigationProperty Name="USERS1" Relationship="QLKSModel.FK__USERS__STAFF_ID__656C112C" FromRole="STAFF" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="US_ID" />
+    </Key>
+    <Property Name="US_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="US_USERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="US_PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="STAFF_ID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ROLE_ID" Type="Int32" />
+    <Property Name="SOURCES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="STAFF" Relationship="QLKSModel.FK__USERS__STAFF_ID__5DCAEF64" FromRole="USER" ToRole="STAFF" />
+    <NavigationProperty Name="STAFF1" Relationship="QLKSModel.FK__USERS__STAFF_ID__656C112C" FromRole="USER" ToRole="STAFF" />
+    <NavigationProperty Name="USERSROLE" Relationship="QLKSModel.FK__USERS__ROLE_ID__5EBF139D" FromRole="USER" ToRole="USERSROLE" />
+    <NavigationProperty Name="USERSROLE1" Relationship="QLKSModel.FK__USERS__ROLE_ID__6477ECF3" FromRole="USER" ToRole="USERSROLE" />
+  </EntityType>
+  <EntityType Name="USERSROLE">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DISPLAYNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="USERS" Relationship="QLKSModel.FK__USERS__ROLE_ID__5EBF139D" FromRole="USERSROLE" ToRole="USER" />
+    <NavigationProperty Name="USERS1" Relationship="QLKSModel.FK__USERS__ROLE_ID__6477ECF3" FromRole="USERSROLE" ToRole="USER" />
+  </EntityType>
+  <Association Name="BILL_CUS_ID_FK">
+    <End Type="QLKSModel.CUSTOMER" Role="CUSTOMER" Multiplicity="0..1" />
+    <End Type="QLKSModel.BILL" Role="BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BILL_RO_ID_FK">
+    <End Type="QLKSModel.ROOM" Role="ROOM" Multiplicity="0..1" />
+    <End Type="QLKSModel.BILL" Role="BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RO_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="RO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BILL_SER_ID_FK">
+    <End Type="QLKSModel.HOTELSERVICE" Role="HOTELSERVICE" Multiplicity="0..1" />
+    <End Type="QLKSModel.BILL" Role="BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELSERVICE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__CUS_ID__5FB337D6">
+    <End Type="QLKSModel.CUSTOMER" Role="CUSTOMER" Multiplicity="0..1" />
+    <End Type="QLKSModel.BILL" Role="BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__SER_ID__60A75C0F">
+    <End Type="QLKSModel.HOTELSERVICE" Role="HOTELSERVICE" Multiplicity="0..1" />
+    <End Type="QLKSModel.BILL" Role="BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELSERVICE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__CUS_ID__571DF1D5">
+    <End Type="QLKSModel.CUSTOMER" Role="CUSTOMER" Multiplicity="0..1" />
+    <End Type="QLKSModel.BOOKROOM" Role="BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__CUS_ID__619B8048">
+    <End Type="QLKSModel.CUSTOMER" Role="CUSTOMER" Multiplicity="0..1" />
+    <End Type="QLKSModel.BOOKROOM" Role="BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__RO_ID__5812160E">
+    <End Type="QLKSModel.ROOM" Role="ROOM" Multiplicity="0..1" />
+    <End Type="QLKSModel.BOOKROOM" Role="BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RO_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="RO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__RO_ID__628FA481">
+    <End Type="QLKSModel.ROOM" Role="ROOM" Multiplicity="0..1" />
+    <End Type="QLKSModel.BOOKROOM" Role="BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RO_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="RO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__SER_ID__59063A47">
+    <End Type="QLKSModel.HOTELSERVICE" Role="HOTELSERVICE" Multiplicity="0..1" />
+    <End Type="QLKSModel.BOOKROOM" Role="BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELSERVICE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOTELSERV__STAFF__4D94879B">
+    <End Type="QLKSModel.STAFF" Role="STAFF" Multiplicity="0..1" />
+    <End Type="QLKSModel.HOTELSERVICE" Role="HOTELSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="HOTELSERVICE">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOTELSERV__STAFF__6383C8BA">
+    <End Type="QLKSModel.STAFF" Role="STAFF" Multiplicity="0..1" />
+    <End Type="QLKSModel.HOTELSERVICE" Role="HOTELSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="HOTELSERVICE">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__STAFF_ID__5DCAEF64">
+    <End Type="QLKSModel.STAFF" Role="STAFF" Multiplicity="0..1" />
+    <End Type="QLKSModel.USER" Role="USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__STAFF_ID__656C112C">
+    <End Type="QLKSModel.STAFF" Role="STAFF" Multiplicity="0..1" />
+    <End Type="QLKSModel.USER" Role="USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__ROLE_ID__5EBF139D">
+    <End Type="QLKSModel.USERSROLE" Role="USERSROLE" Multiplicity="0..1" />
+    <End Type="QLKSModel.USER" Role="USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERSROLE">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__ROLE_ID__6477ECF3">
+    <End Type="QLKSModel.USERSROLE" Role="USERSROLE" Multiplicity="0..1" />
+    <End Type="QLKSModel.USER" Role="USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERSROLE">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

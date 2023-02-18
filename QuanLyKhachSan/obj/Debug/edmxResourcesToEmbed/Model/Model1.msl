@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLKSModelStoreContainer" CdmEntityContainer="QLKSEntities">
+    <EntitySetMapping Name="BILLs">
+      <EntityTypeMapping TypeName="QLKSModel.BILL">
+        <MappingFragment StoreEntitySet="BILL">
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="BILL_DATE" ColumnName="BILL_DATE" />
+          <ScalarProperty Name="SER_ID" ColumnName="SER_ID" />
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+          <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+          <ScalarProperty Name="BILL_ID" ColumnName="BILL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOKROOMs">
+      <EntityTypeMapping TypeName="QLKSModel.BOOKROOM">
+        <MappingFragment StoreEntitySet="BOOKROOM">
+          <ScalarProperty Name="DAY_BOOK" ColumnName="DAY_BOOK" />
+          <ScalarProperty Name="DAY_LEFT" ColumnName="DAY_LEFT" />
+          <ScalarProperty Name="DAY_ARRIVAL" ColumnName="DAY_ARRIVAL" />
+          <ScalarProperty Name="SER_ID" ColumnName="SER_ID" />
+          <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+          <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+          <ScalarProperty Name="B_ID" ColumnName="B_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="QLKSModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="NATIONALITY" ColumnName="NATIONALITY" />
+          <ScalarProperty Name="CAREER" ColumnName="CAREER" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="CUS_IDENTITY" ColumnName="CUS_IDENTITY" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOTELSERVICEs">
+      <EntityTypeMapping TypeName="QLKSModel.HOTELSERVICE">
+        <MappingFragment StoreEntitySet="HOTELSERVICE">
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="SER_ID" ColumnName="SER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOMs">
+      <EntityTypeMapping TypeName="QLKSModel.ROOM">
+        <MappingFragment StoreEntitySet="ROOM">
+          <ScalarProperty Name="PRICE_NIGHT" ColumnName="PRICE_NIGHT" />
+          <ScalarProperty Name="PRICE_DAY" ColumnName="PRICE_DAY" />
+          <ScalarProperty Name="PRICE_HOUR" ColumnName="PRICE_HOUR" />
+          <ScalarProperty Name="RO_TYPE" ColumnName="RO_TYPE" />
+          <ScalarProperty Name="RO_ID" ColumnName="RO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STAFFs">
+      <EntityTypeMapping TypeName="QLKSModel.STAFF">
+        <MappingFragment StoreEntitySet="STAFF">
+          <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="STAFF_ADDRESS" ColumnName="STAFF_ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="STAFF_IDENTITY" ColumnName="STAFF_IDENTITY" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="QLKSModel.USER">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="SOURCES" ColumnName="SOURCES" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="US_PASSWORD" ColumnName="US_PASSWORD" />
+          <ScalarProperty Name="US_USERNAME" ColumnName="US_USERNAME" />
+          <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERSROLEs">
+      <EntityTypeMapping TypeName="QLKSModel.USERSROLE">
+        <MappingFragment StoreEntitySet="USERSROLE">
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

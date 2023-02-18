@@ -1,0 +1,1593 @@
+﻿<Page x:Class="QuanLyKhachSan.PageRoom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyKhachSan"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Title="PageRoom"
+      Name="Room" FontFamily="Montserrat"
+      DataContext="{StaticResource RoomVM}">
+
+    <materialDesign:Card>
+        <materialDesign:Card.Background>
+            <ImageBrush ImageSource="pexels-aleksandar-pasaric-325185.jpg" Stretch="UniformToFill"/>
+        </materialDesign:Card.Background>
+        <Grid Width="1395">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--Filter-->
+                <Grid>
+                    <StackPanel>
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Height" Value="auto"></Setter>
+                                <Setter Property="Width" Value="auto"></Setter>
+                            </Style>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Orientation" Value="Horizontal"></Setter>
+                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                <Setter Property="Margin" Value="10"></Setter>
+                            </Style>
+                            <Style TargetType="materialDesign:Badged">
+                                <Setter Property="Margin" Value="10"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <materialDesign:Badged Badge="3" Height="40">
+                            <Button Height="40" Content="All"
+                                        ToolTip="All"
+                                        Background="WhiteSmoke"
+                                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_Click_42" FontSize="19" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Stretch"></Button>
+                        </materialDesign:Badged>
+                        <materialDesign:Badged Badge="3" Height="40">
+                            <Button Height="40" FontSize="19" FontWeight="SemiBold" Content="Empty"
+                                        ToolTip="Empty"
+                                        Background="WhiteSmoke"
+                                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_Click_41"></Button>
+                        </materialDesign:Badged>
+                        <materialDesign:Badged Height="40" Badge="3">
+                            <Button Height="40" FontSize="19" FontWeight="SemiBold" Content="Received"
+                                        ToolTip="Received"
+                                        Background="#FFEE5757"
+                                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_Click_43"></Button>
+                        </materialDesign:Badged>
+                        <materialDesign:Badged Height="40" Badge="3">
+                            <Button Content="Overtime"
+                                        ToolTip="Over time"
+                                        Background="#FFEA5721"
+                                        Style="{StaticResource MaterialDesignRaisedLightButton}" FontSize="19" FontWeight="SemiBold" Height="40"></Button>
+                        </materialDesign:Badged>
+                        <materialDesign:Badged Height="40" Badge="3">
+                            <Button Content="Booked"
+                                        ToolTip="Booked"
+                                        Background="Aqua"
+                                        Style="{StaticResource MaterialDesignRaisedLightButton}" Click="Button_Click_44" FontSize="19" FontWeight="SemiBold" Height="40"></Button>
+                        </materialDesign:Badged>
+                        <materialDesign:Badged Height="40" Badge="3">
+                            <Button  Content="Fixing"
+                                        ToolTip="Fixing"
+                                        Background="#FFAE9D9D"
+                                        Style="{StaticResource MaterialDesignRaisedLightButton}" FontSize="19" FontWeight="SemiBold" Height="40"></Button>
+                        </materialDesign:Badged>
+                    </StackPanel>
+                </Grid>
+
+                <!--Room-->
+                <Grid Grid.Row="1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                  VerticalScrollBarVisibility="Auto" Margin="35,0,0,0">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Height="290" Margin="0,10,10,10">
+                                <materialDesign:Flipper Width="228" Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        x:Name="Room101"
+                                                        Margin="10" Loaded="Room101_Loaded" FontSize="13"  >
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front101" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="101">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus101"  Icon="101" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival101" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft101" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Single" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book101" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_101"/>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_21" >
+                                                    </Button>
+                                                    <Button x:Name="pay101" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay"
+                                        Grid.Column="1" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_1">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper x:Name="Room102" Width="228"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room102_Loaded" FontSize="13">
+
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front102" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="102">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus102"  Icon="102" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival102" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft102" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Single" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book102" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_102">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_22" >
+                                                    </Button>
+                                                    <Button x:Name="pay102" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_2">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper x:Name="Room103" Width="228"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room103_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front103" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="103">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus103" Icon="103" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival103" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft103" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Single" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book103" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_103">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_23" >
+                                                    </Button>
+                                                    <Button x:Name="pay103" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_3">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room104"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room104_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front104" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="104">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus104" Icon="104" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival104" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft104" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Single" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book104" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_104">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_24" >
+                                                    </Button>
+                                                    <Button x:Name="pay104" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_4">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room105"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room105_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front105" Height="280" Width="225">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="105">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus105" Icon="105" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival105" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft105" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Single" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book105" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_105">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_25" >
+                                                    </Button>
+                                                    <Button x:Name="pay105" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_5">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="280">
+                                <materialDesign:Flipper Width="228" x:Name="Room201"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room201_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front201" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="201">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus201" Icon="201" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival201" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft201" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book201" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_201">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_26" >
+                                                    </Button>
+                                                    <Button x:Name="pay201" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_6">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room202"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room202_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front202" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="202">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus202" Icon="202" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival202" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft202" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal"  Grid.Row="1">
+
+                                                    <Button x:Name="Book202" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_202">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_27" >
+                                                    </Button>
+                                                    <Button x:Name="pay202" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_7">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room203"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room203_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front203" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="203">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus203" Icon="203" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival203" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft203" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book203" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_203">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_28" >
+                                                    </Button>
+                                                    <Button x:Name="pay203" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_8">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room204"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room204_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front204" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="204">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus204" Icon="204" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival204" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft204" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book204" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_204">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_29" >
+                                                    </Button>
+                                                    <Button x:Name="pay204" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_9">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room205"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room205_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front205" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="205">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus205" Icon="205" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival205" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft205" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book205" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_205">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_30" >
+                                                    </Button>
+                                                    <Button x:Name="pay205" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_10">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="280">
+                                <materialDesign:Flipper Width="228" x:Name="Room301"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room301_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front301" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="301">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus301" Icon="301" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival301" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft301" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Triple" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book301" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_301">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_31" >
+                                                    </Button>
+                                                    <Button x:Name="pay301" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_11">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room302"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room302_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front302" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="302">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus302" Icon="302" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival302" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft302" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Triple" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book302" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_302">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_32" >
+                                                    </Button>
+                                                    <Button x:Name="pay302" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_12">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room303"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room303_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front303" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="303">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus303" Icon="303" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival303" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft303" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Triple" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book303" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_303">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_33" >
+                                                    </Button>
+                                                    <Button x:Name="pay303" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_13">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room304"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room304_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front304" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="304">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus304" Icon="304" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival304" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft304" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Triple" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book304" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_304">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_34" >
+                                                    </Button>
+                                                    <Button x:Name="pay304" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_14">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room305"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room305_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front305" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="305">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus305" Icon="305" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival305" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft305" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Triple" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book305" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="9 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_305">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_35" >
+                                                    </Button>
+                                                    <Button x:Name="pay305" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_15">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Height="280">
+                                <materialDesign:Flipper Width="228" x:Name="Room401"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room401_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front401" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="401">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus401" Icon="401" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival401" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft401" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double-Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book401" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_401">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_36" >
+                                                    </Button>
+                                                    <Button x:Name="pay401" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_16">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room402"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room402_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front402" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="402">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus402" Icon="402" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival402" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft402" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double-Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book402" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_402">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_37" >
+                                                    </Button>
+                                                    <Button x:Name="pay402" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_17">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room403"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" 
+                                                        Margin="10" Loaded="Room403_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front403" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="403">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus403" Icon="403" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival403" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft403" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double-Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book403" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_403">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_38" >
+                                                    </Button>
+                                                    <Button x:Name="pay403" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_18">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room404"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room404_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front404" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="404">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus404" Icon="404" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival404" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft404" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double-Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book404" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_404">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_39" >
+                                                    </Button>
+                                                    <Button x:Name="pay404" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_19">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+
+                                <materialDesign:Flipper Width="228" x:Name="Room405"
+                                    Style="{StaticResource MaterialDesignCardFlipper}" Margin="10" Loaded="Room405_Loaded" FontSize="13">
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid x:Name="front405" Height="280" Width="228">
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                    Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                    Margin="8"
+                                    Width="192"
+                                    Content="405">
+                                            </Button>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                    <materialDesign:Flipper.BackContent>
+                                        <Grid Height="265" Width="225">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <materialDesign:ColorZone Padding="6" Mode="PrimaryMid">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                                HorizontalAlignment="Left">
+                                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                                    </Button>
+                                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Text="EDIT USER"></TextBlock>
+                                                </StackPanel>
+                                            </materialDesign:ColorZone>
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel>
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                            <Setter Property="Width" Value="auto"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <materialDesign:Chip x:Name="cus405" Icon="405" Margin="5"></materialDesign:Chip>
+                                                    <TextBlock Text="Thời gian nhận phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timearrival405" HorizontalAlignment="Right"></TextBlock>
+                                                    <TextBlock Text="Thời gian trả phòng" HorizontalAlignment="Left"></TextBlock>
+                                                    <TextBlock x:Name="timeleft405" HorizontalAlignment="Right"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Loại phòng" HorizontalAlignment="Left"></TextBlock>
+                                                        <TextBlock Text="Double-Double" HorizontalAlignment="Right"></TextBlock>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+
+                                                    <Button x:Name="Book405" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Book" Margin="8 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_405">
+                                                    </Button>
+                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Edit" Margin="4 0 4 0"
+                                        HorizontalAlignment="Center" Click="Button_Click_40" >
+                                                    </Button>
+                                                    <Button x:Name="pay405" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto"
+                                        ToolTip="Resource name: MaterialDesignRaisedButton"
+                                        Content="Pay" Margin="4 0 4 0"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Center" Click="Button_Click_20">
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.BackContent>
+                                </materialDesign:Flipper>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </materialDesign:Card>
+</Page>

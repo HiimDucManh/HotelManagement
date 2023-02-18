@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLKSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="BILL_ID" />
+    </Key>
+    <Property Name="BILL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RO_ID" Type="char" MaxLength="20" />
+    <Property Name="CUS_ID" Type="char" MaxLength="20" />
+    <Property Name="SER_ID" Type="char" MaxLength="20" />
+    <Property Name="BILL_DATE" Type="smalldatetime" />
+    <Property Name="PRICE" Type="money" />
+  </EntityType>
+  <EntityType Name="BOOKROOM">
+    <Key>
+      <PropertyRef Name="B_ID" />
+    </Key>
+    <Property Name="B_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUS_ID" Type="char" MaxLength="20" />
+    <Property Name="CUS_NAME" Type="nvarchar(max)" />
+    <Property Name="RO_ID" Type="char" MaxLength="20" />
+    <Property Name="SER_ID" Type="char" MaxLength="20" />
+    <Property Name="DAY_ARRIVAL" Type="smalldatetime" />
+    <Property Name="DAY_LEFT" Type="smalldatetime" />
+    <Property Name="DAY_BOOK" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUS_ID" />
+    </Key>
+    <Property Name="CUS_ID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="FULL_NAME" Type="nvarchar(max)" />
+    <Property Name="BIRTHDAY" Type="smalldatetime" />
+    <Property Name="SEX" Type="nvarchar" MaxLength="4" />
+    <Property Name="CUS_IDENTITY" Type="tinyint" />
+    <Property Name="PHONE" Type="char" MaxLength="11" />
+    <Property Name="CAREER" Type="nvarchar(max)" />
+    <Property Name="NATIONALITY" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="HOTELSERVICE">
+    <Key>
+      <PropertyRef Name="SER_ID" />
+    </Key>
+    <Property Name="SER_ID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="STAFF_ID" Type="char" MaxLength="20" />
+    <Property Name="FULL_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PRICE" Type="money" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="RO_ID" />
+    </Key>
+    <Property Name="RO_ID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="RO_TYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PRICE_HOUR" Type="money" />
+    <Property Name="PRICE_DAY" Type="money" />
+    <Property Name="PRICE_NIGHT" Type="money" />
+  </EntityType>
+  <EntityType Name="STAFF">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="FULL_NAME" Type="nvarchar(max)" />
+    <Property Name="BIRTHDAY" Type="smalldatetime" />
+    <Property Name="SEX" Type="nvarchar" MaxLength="4" />
+    <Property Name="STAFF_IDENTITY" Type="tinyint" />
+    <Property Name="PHONE" Type="char" MaxLength="11" />
+    <Property Name="STAFF_ADDRESS" Type="nvarchar(max)" />
+    <Property Name="SALARY" Type="money" />
+    <Property Name="POSITION" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="US_ID" />
+    </Key>
+    <Property Name="US_ID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="US_USERNAME" Type="varchar(max)" />
+    <Property Name="US_PASSWORD" Type="varchar(max)" />
+    <Property Name="STAFF_ID" Type="char" MaxLength="20" />
+    <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+    <Property Name="ROLE_ID" Type="int" />
+    <Property Name="SOURCES" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="USERSROLE">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DISPLAYNAME" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="BILL_CUS_ID_FK">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BILL_RO_ID_FK">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RO_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="RO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BILL_SER_ID_FK">
+    <End Role="HOTELSERVICE" Type="Self.HOTELSERVICE" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELSERVICE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__CUS_ID__5FB337D6">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BILL__SER_ID__60A75C0F">
+    <End Role="HOTELSERVICE" Type="Self.HOTELSERVICE" Multiplicity="0..1" />
+    <End Role="BILL" Type="Self.BILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELSERVICE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="BILL">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__CUS_ID__571DF1D5">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="BOOKROOM" Type="Self.BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__CUS_ID__619B8048">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+    <End Role="BOOKROOM" Type="Self.BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__RO_ID__5812160E">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+    <End Role="BOOKROOM" Type="Self.BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RO_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="RO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__RO_ID__628FA481">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+    <End Role="BOOKROOM" Type="Self.BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RO_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="RO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKROOM__SER_ID__59063A47">
+    <End Role="HOTELSERVICE" Type="Self.HOTELSERVICE" Multiplicity="0..1" />
+    <End Role="BOOKROOM" Type="Self.BOOKROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTELSERVICE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="BOOKROOM">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOTELSERV__STAFF__4D94879B">
+    <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+    <End Role="HOTELSERVICE" Type="Self.HOTELSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="HOTELSERVICE">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOTELSERV__STAFF__6383C8BA">
+    <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+    <End Role="HOTELSERVICE" Type="Self.HOTELSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="HOTELSERVICE">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__ROLE_ID__5EBF139D">
+    <End Role="USERSROLE" Type="Self.USERSROLE" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERSROLE">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__ROLE_ID__6477ECF3">
+    <End Role="USERSROLE" Type="Self.USERSROLE" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERSROLE">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__STAFF_ID__5DCAEF64">
+    <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__STAFF_ID__656C112C">
+    <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STAFF">
+        <PropertyRef Name="STAFF_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="STAFF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLKSModelStoreContainer">
+    <EntitySet Name="BILL" EntityType="Self.BILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BOOKROOM" EntityType="Self.BOOKROOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOTELSERVICE" EntityType="Self.HOTELSERVICE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERSROLE" EntityType="Self.USERSROLE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="BILL_CUS_ID_FK" Association="Self.BILL_CUS_ID_FK">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="BILL_RO_ID_FK" Association="Self.BILL_RO_ID_FK">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="BILL_SER_ID_FK" Association="Self.BILL_SER_ID_FK">
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICE" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__CUS_ID__5FB337D6" Association="Self.FK__BILL__CUS_ID__5FB337D6">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BILL__SER_ID__60A75C0F" Association="Self.FK__BILL__SER_ID__60A75C0F">
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICE" />
+      <End Role="BILL" EntitySet="BILL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__CUS_ID__571DF1D5" Association="Self.FK__BOOKROOM__CUS_ID__571DF1D5">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__CUS_ID__619B8048" Association="Self.FK__BOOKROOM__CUS_ID__619B8048">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__RO_ID__5812160E" Association="Self.FK__BOOKROOM__RO_ID__5812160E">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__RO_ID__628FA481" Association="Self.FK__BOOKROOM__RO_ID__628FA481">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKROOM__SER_ID__59063A47" Association="Self.FK__BOOKROOM__SER_ID__59063A47">
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICE" />
+      <End Role="BOOKROOM" EntitySet="BOOKROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOTELSERV__STAFF__4D94879B" Association="Self.FK__HOTELSERV__STAFF__4D94879B">
+      <End Role="STAFF" EntitySet="STAFF" />
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOTELSERV__STAFF__6383C8BA" Association="Self.FK__HOTELSERV__STAFF__6383C8BA">
+      <End Role="STAFF" EntitySet="STAFF" />
+      <End Role="HOTELSERVICE" EntitySet="HOTELSERVICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__ROLE_ID__5EBF139D" Association="Self.FK__USERS__ROLE_ID__5EBF139D">
+      <End Role="USERSROLE" EntitySet="USERSROLE" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__ROLE_ID__6477ECF3" Association="Self.FK__USERS__ROLE_ID__6477ECF3">
+      <End Role="USERSROLE" EntitySet="USERSROLE" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__STAFF_ID__5DCAEF64" Association="Self.FK__USERS__STAFF_ID__5DCAEF64">
+      <End Role="STAFF" EntitySet="STAFF" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__STAFF_ID__656C112C" Association="Self.FK__USERS__STAFF_ID__656C112C">
+      <End Role="STAFF" EntitySet="STAFF" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

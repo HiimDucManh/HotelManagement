@@ -1,0 +1,129 @@
+﻿<Window x:Class="QuanLyKhachSan.PrintReportWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:local="clr-namespace:QuanLyKhachSan"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewmodel1="clr-namespace:QuanLyKhachSan.ViewModel" 
+        x:Name="printReportWindow"
+        DataContext="{StaticResource BillVM}"
+        Title="PrintReportWindow" Width="900" Height="800" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" WindowStartupLocation="CenterScreen" Loaded="printReportWindow_Loaded">
+    <ScrollViewer>
+        <Grid>
+            <Button HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Click="Button_Click">
+                <materialDesign:PackIcon Kind="Printer"/>
+            </Button>
+            <Grid x:Name="print">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="200"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="1" Margin="250 10 0 0">
+                    <TextBlock Text="Your Company Name" FontSize="18" Margin="5" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Your Company Adress" FontSize="11" Margin="5" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Town, City," FontSize="11" Margin="5" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Postcode" FontSize="11" Margin="5" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="30 0 300 0"  Grid.Row="0">
+                    <Image Source="Logo.png" Width="50" Height="50" VerticalAlignment="Center"/>
+                    <TextBlock Text="REPORT" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FF647DF1"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="DateTime:" FontSize="12" Margin="5"/>
+                                <TextBlock x:Name="reportDate"  FontSize="12" Margin="5" FontWeight="DemiBold"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Margin="10 30 10 0" Background="#FF6AAFFF">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="STT" Grid.Column="0" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="ID" Grid.Column="1" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="ID Customer" Grid.Column="2" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Name" Grid.Column="3" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Services" Grid.Column="4" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Date" Grid.Column="5" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="SUBTOTAL" Grid.Column="6" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Fill="Black" Height="1" Margin="5 2" Opacity="0.5"/>
+                    <ScrollViewer Height="266" Margin="0,0,0.17,0">
+                        <ListView x:Name="listLV" 
+                                  ItemsSource="{Binding BillList}" IsEnabled="False">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding STT}" FrameworkElement.FlowDirection="RightToLeft"></GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding BILL_ID}"></GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding CUS_ID}"></GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding CUS_FULLNAME}"></GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding SER_ID}"></GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding BILL_DATE}"></GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding PRICE}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Margin="20 0">
+                    <Grid Margin="10 20 10 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Text="TOTAL DUE" Grid.Column="3" FontSize="12" FontWeight="ExtraLight" HorizontalAlignment="Right"/>
+                    </Grid>
+                    <Rectangle Fill="Black" Height="1" Width="70" HorizontalAlignment="Right" Margin="5" Opacity="0.5"/>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock x:Name="price" MinWidth="100" FontSize="25" Margin="5 0 0 0" HorizontalAlignment="Right" Foreground="#FF62013C" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Grid>
+                    <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
+
+                    <Grid Margin="0 20" HorizontalAlignment="Stretch">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="heart" VerticalAlignment="Center"/>
+                            <TextBlock Text="Thank you!" VerticalAlignment="Center" FontSize="20" Margin="5" FontWeight="Light"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <TextBlock Text="name@email.com" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
+                            <TextBlock Text="99 9999-9999" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
+                            <TextBlock Text="website.com" VerticalAlignment="Center" FontSize="8" Margin="5" FontWeight="Light"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Button x:Name="exit" HorizontalAlignment="Right" Margin="0,0,72.038,9.698" VerticalAlignment="Bottom" Click="exit_Click" >
+                <materialDesign:PackIcon Kind="Cancel"/>
+            </Button>
+        </Grid>
+    </ScrollViewer>
+</Window>

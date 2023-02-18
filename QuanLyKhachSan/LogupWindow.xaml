@@ -1,0 +1,145 @@
+﻿<Window x:Class="QuanLyKhachSan.LogupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyKhachSan"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        DataContext="{StaticResource LogupVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Đăng ký" Height="400" Width="400" 
+        Background="Transparent"
+        Name="logupWindow" FontFamily="Montserrat"
+        AllowsTransparency="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="3">
+            <Border.Background>
+                <ImageBrush ImageSource="pexels-cameron-casey-1334605.png" Stretch="UniformToFill"/>
+            </Border.Background>
+        </Border>
+
+        <Border VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    BorderThickness="0 0 0 3"
+                    BorderBrush="#FF31577E"
+                    Width="120">
+            <TextBlock HorizontalAlignment="Center" Text="Log up"
+                           FontSize="26"
+                           Margin="0 0 0 5"></TextBlock>
+        </Border>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Mã nhân viên" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Bold" Foreground="White" Margin="0,0,-19,0"></TextBlock>
+                </Grid>
+                <TextBox x:Name="id"
+                         Text="{Binding Id}"
+                    BorderThickness="1"
+                             Width="240"
+                             VerticalContentAlignment="Center" Foreground="White" BorderBrush="#89606060" Margin="16,0,0,0" FontSize="13" FontWeight="Medium"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Tên tài khoản" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Bold" Foreground="White" Margin="0,0,-19,0"></TextBlock>
+                </Grid>
+                <TextBox x:Name="username" 
+                         Text="{Binding Username}"
+                         BorderThickness="1"
+                             Width="240"
+                             VerticalContentAlignment="Center" Foreground="White" BorderBrush="#89606060" Margin="16,0,0,0" FontSize="13" FontWeight="Medium"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Mật khẩu" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Bold" Foreground="White" Margin="0,0,-19,0"></TextBlock>
+                </Grid>
+                <PasswordBox x:Name="password" 
+                         
+                         BorderThickness="1"
+                             Width="240"
+                             VerticalContentAlignment="Center" Foreground="White" BorderBrush="#89606060" Margin="16,0,0,0" FontSize="13" FontWeight="Medium">
+
+                </PasswordBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Nhập lại mật khẩu" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Bold" Foreground="White" Margin="0,0,-19,0"></TextBlock>
+                </Grid>
+                <PasswordBox x:Name="passwordVerify" 
+                         
+                         BorderThickness="1"
+                             Width="240"
+                             VerticalContentAlignment="Center" Foreground="White" BorderBrush="#89606060" Margin="16,0,0,0" FontSize="13" FontWeight="Medium"></PasswordBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="0 20 0 0" Grid.Row="2" >
+
+            <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Width="105"
+                        Margin="0 0 10 0"
+                        ToolTip="Cancel"
+                        Content="Cancel"
+                        Background="#FF2D479D"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Command="{Binding CloseCommand}"
+                        CommandParameter="{Binding ElementName=logupWindow}" Click="Button_Click" FontWeight="SemiBold" FontSize="15">
+                </Button>
+                <Button Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Width="105"
+                        Margin="0 10 0 10"
+                        ToolTip="Sign up"
+                        Content="Log up"
+                        Background="#FF2D479D"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                   
+                    BorderThickness="0" Click="Button_Click_1" FontWeight="SemiBold" FontSize="15">
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

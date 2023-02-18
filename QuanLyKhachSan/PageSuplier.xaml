@@ -1,0 +1,87 @@
+﻿<Page x:Class="QuanLyKhachSan.PageSuplier"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyKhachSan"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      FontFamily="Roboto"
+      DataContext="{StaticResource ServicesVM}"
+      Title="PageSiplier">
+
+    <materialDesign:Card>
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="pexels-aleksandar-pasaric-325185.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                            Width="100"
+                            ToolTip="New"
+                            Content="New"
+                            HorizontalAlignment="Right"
+                            Margin="10 10 30 10"
+                            Background="#FF31577E"
+                            BorderThickness="0" Click="Button_Click">
+                    </Button>
+                </Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                    <DataGrid x:Name="data" Margin="8,8,12,8"
+                      ItemsSource="{Binding ServicesList}"
+                      CanUserSortColumns="True"
+                      CanUserAddRows="False"
+                      AutoGenerateColumns="False"
+                      materialDesign:DataGridAssist.CellPadding="8"
+                      materialDesign:DataGridAssist.ColumnHeaderPadding="20" IsReadOnly="True" Loaded="data_Loaded" MouseDoubleClick="data_MouseDoubleClick" FontSize="14">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="edit" Header="_Edit" Click="edit_Click"></MenuItem>
+                                <MenuItem x:Name="del" Header="_Delete" Click="del_Click"></MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Binding="{Binding IsSelected}"
+                                            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                            Header="Hoạt động"
+                                            MinWidth="50"/>
+                            <DataGridTextColumn 
+                                        Header="STT"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="50"/>
+                            <DataGridTextColumn Binding="{Binding SER_ID}"
+                                        Header="Mã dịch vụ"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding FULL_NAME}"
+                                        Header="Tên dịch vụ"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+                                        MinWidth="150"/>
+                            <DataGridTextColumn Binding="{Binding PRICE}"
+                                        Header="Giá"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                         MinWidth="130"/>
+                            <DataGridTextColumn Binding="{Binding STAFF_ID}"
+                                        Header="Mã nhân viên phụ trách"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                        MinWidth="130"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </materialDesign:Card>
+</Page>

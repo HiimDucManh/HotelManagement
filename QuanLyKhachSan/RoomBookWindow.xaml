@@ -1,0 +1,204 @@
+﻿<Window x:Class="QuanLyKhachSan.RoomBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyKhachSan"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        DataContext="{StaticResource BookingVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Đăng ký" Height="540" Width="400" 
+        Background="Transparent"
+        Name="BookingWindow"
+        FontFamily="Montserrat"
+        AllowsTransparency="True" Loaded="BookingWindow_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="3" 
+                
+                BorderThickness="2"
+                BorderBrush="#FF31577E">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                    <GradientStop Color="#FF140B6A" Offset="0"/>
+                    <GradientStop Color="#FFC499FD" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Border VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    BorderThickness="0 0 0 3"
+                    BorderBrush="White"
+                    Width="130">
+            <TextBlock Text="BOOKING"
+                            FontWeight="SemiBold" Foreground="White"
+                           FontSize="26"
+                           Margin="0 0 0 5"></TextBlock>
+        </Border>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Số phòng" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <TextBox x:Name="roomID"
+                         
+                    BorderThickness="1"
+                             Width="260"
+                             VerticalContentAlignment="Center"
+                             Text="{Binding RoomId}" BorderBrush="#89363434" Foreground="White">
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Mã khách hàng" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <TextBox x:Name="cusID" 
+                         Text="{Binding CusID}"
+                         BorderThickness="1"
+                             Width="260"
+                             VerticalContentAlignment="Center" BorderBrush="#89363434" Foreground="White"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Tên khách hàng" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <TextBox BorderThickness="1"
+                         Text="{Binding CusName}"
+                         x:Name="cusName"
+                             Width="260"
+                             VerticalContentAlignment="Center" BorderBrush="#89363434" Foreground="White"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" 
+                            Height="30"
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Mã dịch vụ" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <TextBox x:Name="serID" 
+                         Text="{Binding SerID}"
+                         BorderThickness="1"
+                             Width="260"
+                             VerticalContentAlignment="Center" BorderBrush="#89363434" Foreground="White"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" 
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Ngày nhận" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <DatePicker Width="100"
+                            x:Name="timearrival"
+                            materialDesign:HintAssist.Hint="Pick Date"
+                            SelectedDate="{Binding TimeArrival}"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Ngày trả" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <DatePicker Width="100"
+                            x:Name="timeleft"
+                            materialDesign:HintAssist.Hint="Pick Date"
+                            SelectedDate="{Binding TimeLeft}"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" 
+                            Margin="0 10 0 10">
+                <Grid Width="120" 
+                          Margin="0 0 10 0">
+                    <TextBlock Text="Ngày đặt" 
+                               FontSize="14"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                              FontWeight="Medium" Foreground="White" Margin="0,0,-4,0"></TextBlock>
+                </Grid>
+                <DatePicker x:Name="timeBook"
+                            Width="100"
+                            materialDesign:HintAssist.Hint="Pick Date"
+                            SelectedDate="{Binding TimeBook}"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Width="105"
+                        Margin="0 0 5 0"
+                        ToolTip="Cancel"
+                        Content="Cancel"
+                        Background="#FF31577E"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="SemiBold"
+                    Command="{Binding CloseCommand}"
+                    CommandParameter="{Binding ElementName=BookingWindow}">
+            </Button>
+            <Button Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Width="105"
+                        Margin="5 0 0 0"
+                        ToolTip="Booking"
+                        Content="Booking"
+                        Background="#FF31577E"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="SemiBold"
+                        Click="Button_Click"
+                        >
+            </Button>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
